@@ -1,0 +1,5 @@
+.DS_Store
+nvim.log
+*.swp
+*.swo
+.luarc.json
