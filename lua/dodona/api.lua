@@ -82,14 +82,23 @@ function M.request(url, opts, callback)
 
   local timeout = opts.timeout or 30000
   local args = {
-    "curl", "-q", "-sS",
-    "--max-time", tostring(timeout / 1000),
-    "--proto", "=http,https",
-    "--proto-redir", config.base_url:match("^https:") and "=https" or "=http,https",
-    "-H", "Accept: application/json",
-    "--write-out", "\n%{http_code}",
-    "--config", "-",
-    "--url", full_url,
+    "curl",
+    "-q",
+    "-sS",
+    "--max-time",
+    tostring(timeout / 1000),
+    "--proto",
+    "=http,https",
+    "--proto-redir",
+    config.base_url:match("^https:") and "=https" or "=http,https",
+    "-H",
+    "Accept: application/json",
+    "--write-out",
+    "\n%{http_code}",
+    "--config",
+    "-",
+    "--url",
+    full_url,
   }
   -- Do not put the token or submitted code in process arguments.
   local stdin = "header = " .. quote("Authorization: " .. token) .. "\n"

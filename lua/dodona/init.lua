@@ -95,9 +95,14 @@ function M.setup(opts)
   config.base_url = config.base_url:gsub("/+$", "")
   local authority = config.base_url:match("^https?://([^/]+)$")
   local host = authority and authority:gsub(":%d+$", "")
-  assert(host and (host:match("^[%w%.%-]+$") or host:match("^%[[%x:%.]+%]$")),
-    "dodona: base_url must be an HTTP(S) origin")
-  assert(type(config.token_path) == "string" and config.token_path ~= "", "dodona: token_path must be a nonempty string")
+  assert(
+    host and (host:match("^[%w%.%-]+$") or host:match("^%[[%x:%.]+%]$")),
+    "dodona: base_url must be an HTTP(S) origin"
+  )
+  assert(
+    type(config.token_path) == "string" and config.token_path ~= "",
+    "dodona: token_path must be a nonempty string"
+  )
   config.token_path = vim.fs.normalize(config.token_path)
   assert(config.token == nil or valid_token(config.token), "dodona: token must be a nonempty string without whitespace")
   M.config = config

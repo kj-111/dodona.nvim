@@ -37,7 +37,7 @@ function M.submit()
         code = table.concat(lines, "\n"),
         course_id = course_id,
         exercise_id = exercise_id,
-      }
+      },
     },
   }, function(response, err)
     if not response then

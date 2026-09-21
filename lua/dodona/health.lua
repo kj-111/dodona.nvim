@@ -54,8 +54,10 @@ function M.check()
   })
   if not data then
     health.error("Could not connect to Dodona: " .. request_err)
-  elseif type(data.first_name) == "string" and (data.last_name == nil or data.last_name == vim.NIL
-    or type(data.last_name) == "string") then
+  elseif
+    type(data.first_name) == "string"
+    and (data.last_name == nil or data.last_name == vim.NIL or type(data.last_name) == "string")
+  then
     local last_name = type(data.last_name) == "string" and data.last_name or ""
     health.ok("Connection succeeded - logged in as " .. data.first_name .. " " .. last_name)
   else
