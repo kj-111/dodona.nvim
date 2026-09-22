@@ -53,11 +53,21 @@ Submission and polling run asynchronously. Polling stops after 60 seconds;
 Dodona may still finish evaluating the submission after that. Exercise URLs
 must belong to the configured server.
 
+Use `:DodonaResult` to view your last submitted solution's feedback in a vertical
+split on the right. It shows the status, test totals, available scores and runtime,
+and details for unsuccessful tests (input, expected output and actual output).
+Judge messages and code annotations are included. Press `q` to close or `r` to
+refresh; each refresh reads the result without submitting code again.
+
+The last submission is remembered for the current session. To inspect an older
+submission, use its numeric ID, for example `:DodonaResult 123456`.
+
 ## Commands
 
 | Command | Description |
 |---------|-------------|
 | `:DodonaSubmit` | Submit current buffer to Dodona |
+| `:DodonaResult [id]` | Show feedback for the last submission or a specific ID |
 | `:DodonaSetToken` | Set your API token |
 | `:DodonaHealth` | Run `:checkhealth dodona` |
 

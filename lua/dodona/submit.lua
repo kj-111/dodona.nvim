@@ -49,6 +49,7 @@ function M.submit()
       vim.notify("Submission accepted but result URL is invalid: " .. result_err, vim.log.levels.ERROR)
       return
     end
+    require("dodona.result").remember(result_url, config)
     vim.notify("Submitted, waiting for result...", vim.log.levels.INFO)
     require("dodona.poll").start(result_url, config)
   end)
